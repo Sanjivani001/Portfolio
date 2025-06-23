@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Portfolio</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f2f5;
+    padding: 40px;
+  }
+
+  h1, h2 {
+    color: #333;
+  }
+
+  form {
+    background: #fff;
+    padding: 30px;
+    max-width: 800px;
+    margin: auto;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  button:hover {
+    background: #0056b3;
+  }
+
+  .project-block {
+    padding: 20px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+
+  .project-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+</style>
+
+</head>
+<body>
+  <h1 style="text-align: center;"> Create Your Portfolio</h1>
+  <form action="/form" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required><br>
+    <input type="text" name="title" placeholder="Your Title" required><br>
+    <textarea name="about" placeholder="About You" required></textarea><br>
+    <input type="text" name="skills" placeholder="Skills (comma-separated)" required><br>
+    <input type="email" name="email" placeholder="Email" required><br>
+    <input type="text" name="phone" placeholder="Phone"><br>
+    <input type="url" name="github" placeholder="GitHub URL"><br>
+    <input type="url" name="linkedin" placeholder="LinkedIn URL"><br>
+
+   <h2>Projects</h2>
+<div id="projects">
+  <div class="project-block">
+    <div class="project-title">Project 1</div>
+    <input type="text" name="projectTitle" placeholder="Project Title" required>
+    <textarea name="projectDescription" placeholder="Project Description" required></textarea>
+    <input type="text" name="projectLink" placeholder="Project Link" required>
+    <input type="text" name="projectImage" placeholder="Image URL (optional)">
+  </div>
+</div>
+
+<button type="button" onclick="addProject()">➕ Add Project</button>
+
+    <label>Select Template:</label><br>
+    <select name="template">
+      <option value="template1">Template 1</option>
+      <option value="template2">Template 2</option>
+      <option value="template3">Template 3</option>
+    </select><br><br>
+
+    <button type="submit">Generate Portfolio</button>
+  </form>
+
+  <script>
+  let projectCount = 1;
+
+  function addProject() {
+    projectCount++;
+    const div = document.createElement('div');
+    div.className = 'project-block';
+    div.innerHTML = `
+      <div class="project-title">Project ${projectCount}</div>
+      <input type="text" name="projectTitle" placeholder="Project Title" required>
+      <textarea name="projectDescription" placeholder="Project Description" required></textarea>
+      <input type="text" name="projectLink" placeholder="Project Link" required>
+      <input type="text" name="projectImage" placeholder="Image URL (optional)">
+    `;
+    document.getElementById('projects').appendChild(div);
+  }
+</script>
+</body>
+</html>

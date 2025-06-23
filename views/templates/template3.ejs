@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= portfolio.name %>'s Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #ffebee;
+      color: #333;
+      padding: 30px;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    }
+
+    .main {
+      flex-grow: 1;
+      padding: 40px;
+      background: #fffde7;
+    }
+
+    h1, h2, h3 {
+      color: #c2185b;
+    }
+
+    .info {
+      margin-bottom: 20px;
+    }
+
+    .project {
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-left: 4px solid #f06292;
+    }
+
+    .project img {
+      max-width: 250px;
+      margin-top: 10px;
+    }
+
+    a {
+      color: #ad1457;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h1><%= portfolio.name %></h1>
+    <h3><%= portfolio.title %></h3>
+    <p><strong>Email:</strong> <%= portfolio.email %></p>
+    <p><strong>Phone:</strong> <%= portfolio.phone %></p>
+    <p><strong>GitHub:</strong> <a href="<%= portfolio.github %>">GitHub</a></p>
+    <p><strong>LinkedIn:</strong> <a href="<%= portfolio.linkedin %>">LinkedIn</a></p>
+  </div>
+
+  <div class="main">
+    <div class="info">
+      <h2>About</h2>
+      <p><%= portfolio.about %></p>
+    </div>
+
+    <div class="info">
+      <h2>Skills</h2>
+      <p><%= portfolio.skills %></p>
+    </div>
+
+    <div class="info">
+      <h2>Projects</h2>
+      <% portfolio.projects.forEach(project => { %>
+        <div class="project">
+          <h3><%= project.title %></h3>
+          <p><%= project.description %></p>
+          <a href="<%= project.link %>" target="_blank">Project Link</a>
+          <% if (project.image) { %>
+            <br><img src="<%= project.image %>" alt="Project Image">
+          <% } %>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+</html>
